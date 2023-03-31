@@ -1,0 +1,1 @@
+C:\Programing\python-pdf\env\Scripts\python.exe C:\Programing\python-pdf\pdf-merger\merge.py

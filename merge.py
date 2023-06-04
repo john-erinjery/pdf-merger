@@ -5,18 +5,16 @@ mergedObject = PdfMerger()
 download_dir = f"{os.getcwd()}\\pdfs"
 download_dir_list = os.listdir(download_dir)
 d1 = []
-d2 = []
-d3 = []
 for i in download_dir_list:
-    d3.append(int(i.split('.')[0]))
-d3.sort()
-for i in d3:
-    d1.append(str(i))
+    num = i.split('.pd')[0]
+    d1.append(int(num) if num.isdigit() else float(num))
+d1.sort()
 for i in d1:
-    mergedObject.append(PdfReader(download_dir + d2 + ' ' + str(i) + '.pdf', 'rb'))
-    print('Added' + ' ' + d2 + ' ' + str(i) + '.pdf' + ' to merger.')
+    print('adding {}.pdf to merger'.format(i))
+    mergedObject.append(PdfReader(os.path.join(download_dir, str(i) + '.pdf', 'rb'))
 print('Processing...')
-mergedObject.write("{}/mergedfilesoutput.pdf".format())
+mergedObject.write('{}-{}.pdf'.format(max(d1), min(d1)))
 print('deleting the temp folder..')
-rmtree(download_dir)
+# rmtree(download_dir)
 print('Done!')
+
